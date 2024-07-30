@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Echo from "./Echo"; // Pastikan path ini sesuai dengan lokasi file echo.js
+import PlayNotif from "./components/sounds/notif";
 
 const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
 
+  const notificationSound = PlayNotif("notif.wav");
+
   useEffect(() => {
     // Listen for messages on the 'chat' channel
     Echo.channel("chat").listen("MessageSent", (event) => {
-      setMessages([...messages, { text: event.message, user: event.userId }]);
+      setMessages((prevMessages) => [...prevMessages, { text: event.message }]);
+      notificationSound();
     });
 
     // Cleanup listener on component unmount
     return () => {
       Echo.leaveChannel("chat");
     };
-  }, [messages]);
+  }, [notificationSound]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

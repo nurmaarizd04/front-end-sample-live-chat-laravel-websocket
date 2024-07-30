@@ -1,6 +1,6 @@
 # Getting Started Beckend Laravel Websokcet
 
-h [Git hub](https://github.com/nurmaarizd04/fitur-live-chat-laravel-websocket).
+Repo Beck end [Git hub](https://github.com/nurmaarizd04/fitur-live-chat-laravel-websocket).
 
 ## Available Scripts
 
